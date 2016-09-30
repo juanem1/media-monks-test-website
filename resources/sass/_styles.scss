@@ -1,0 +1,79 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url(../images/background.jpg) 0 0 #000 no-repeat;
+  background-size: cover;
+  bottom: 0;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.arrow {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-grow: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.slides {
+  color: #fff;
+  display: flex;
+  flex-grow: 10;
+  font-family: 'Klavika-Light', serif;
+  text-decoration: underline;
+
+  .hidden {
+    display: none;
+  }
+
+  .slide {
+    display: flex;
+  }
+
+  h2 {
+    font-size: 3rem;
+    letter-spacing: 5px;
+    margin: 2rem 0 0 2rem;
+    padding: 0;
+  }
+
+  .center {
+    align-items: center;
+  }
+
+  .left {
+    align-items: flex-start;
+  }
+
+  .right {
+    align-items: flex-end;
+  }
+
+  .top {
+    align-items: center;
+  }
+
+}
+
+.logo {
+  bottom: 15px;
+  height: 100px;
+  position: fixed;
+  right: 15px;
+  width: 100px;
+
+  svg {
+    fill: #fff;
+    height: 100px;
+    width: 100px;
+  }
+}
