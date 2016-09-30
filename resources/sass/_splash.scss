@@ -1,0 +1,16 @@
+.splash {
+
+  .monk {
+    animation: levitation 1.2s alternate ease-in-out infinite;
+    background: url('../images/monk.png') 0 0 transparent no-repeat;
+    height: 149px;
+    width: 106px;
+  }
+
+  .splash-text {
+    color: #fff;
+    font-family: 'Klavika-Regular', serif;
+    font-style: italic;
+  }
+
+}

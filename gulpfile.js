@@ -1,12 +1,11 @@
-
 var gulp = require('gulp'),
-    concat = require('gulp-concat'),
     rename = require('gulp-rename'),
-    uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
+    concat = require('gulp-concat'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    babel = require('gulp-babel');
 
 /**
  * Compile all styles
@@ -25,12 +24,10 @@ gulp.task('styles', ['clean-css'], function() {
  * Compile all scripts
  */
 gulp.task('scripts', ['clean-js'], function() {
-  return gulp.src('resources/js/**/*.js')
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('public/js'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/js'));
+    return gulp.src('resources/js/**/*.js')
+      .pipe(babel())
+      .pipe(concat('main.js'))
+      .pipe(gulp.dest('public/js'));
 });
 
 /**

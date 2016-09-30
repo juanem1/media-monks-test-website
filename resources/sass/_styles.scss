@@ -1,9 +1,11 @@
-html, body {
+body,
+html {
   height: 100%;
 }
 
 body {
-  background: url(../images/background.jpg) 0 0 #000 no-repeat;
+  background: url('../images/background.jpg') 0 0 $background no-repeat;
+  background-position: 0 0;
   background-size: cover;
   bottom: 0;
   display: flex;
@@ -12,38 +14,66 @@ body {
   margin: 0;
   overflow: hidden;
   padding: 0;
+
+  &.splash {
+    align-items: center;
+    background: url('../images/loaderbg.png') center center $loader-background no-repeat;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .arrow {
   align-items: center;
-  color: #fff;
   display: flex;
   flex-grow: 0;
   font-size: 2.5rem;
   font-weight: bold;
   text-decoration: none;
+
+  a {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+  }
+
+  &.left-arrow a {
+    background-image: url('../images/back.svg');
+    margin-left: 20px;
+  }
+
+  &.right-arrow a {
+    background-image: url('../images/next.svg');
+    margin-right: 20px;
+  }
+
+}
+
+.hidden {
+  display: none;
 }
 
 .slides {
   color: #fff;
   display: flex;
   flex-grow: 10;
-  font-family: 'Klavika-Light', serif;
-  text-decoration: underline;
-
-  .hidden {
-    display: none;
-  }
+  font-family: 'Klavika-Regular', serif;
 
   .slide {
-    display: flex;
-  }
-
-  h2 {
-    font-size: 3rem;
-    letter-spacing: 5px;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
     margin: 2rem 0 0 2rem;
     padding: 0;
+    transition: all 2s linear;
+
+    span {
+      border-bottom: 1px solid;
+    }
+
+    &.hidden {
+      display: none;
+    }
   }
 
   .center {

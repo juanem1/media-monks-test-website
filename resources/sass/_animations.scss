@@ -1,0 +1,45 @@
+@keyframes levitation {
+  0% {transform: translate(0, 0); }
+  100% {transform: translate(0, -50px); }
+}
+
+@keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: 10% 0; }
+}
+
+.step-1 {
+  background-position: 11.11% 0;
+}
+
+.step-2 {
+  background-position: 22.22% 0;
+}
+
+.step-3 {
+  background-position: 33.33% 0;
+}
+
+.step-4 {
+  background-position: 44.44% 0;
+}
+
+.step-5 {
+  background-position: 55.55% 0;
+}
+
+.step-6 {
+  background-position: 66.66% 0;
+}
+
+.step-7 {
+  background-position: 77.77% 0;
+}
+
+.step-8 {
+  background-position: 88.88% 0;
+}
+
+.step-9 {
+  background-position: 99.99% 0;
+}
