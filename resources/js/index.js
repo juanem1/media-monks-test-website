@@ -1,98 +1,119 @@
 (function() {
 
-  var helper = new Helper,
-      steps = new Steps;
+    var helper = new Helper,
+        steps = new Steps,
+        animations = new Animations,
+        splash = new Splash(helper),
+        introText = new IntroText(helper, animations),
+        infoText = new InfoText(helper, animations);
 
-  var hidden = 'hidden',
-      body = helper.getElement('body'),
-      rightArrow = helper.getElement('right-arrow'),
-      leftArrow = helper.getElement('left-arrow');
+    var hidden = 'hidden',
+        body = helper.getElement('body'),
+        rightArrow = helper.getElement('right-arrow'),
+        leftArrow = helper.getElement('left-arrow');
 
-  function showNextCard() {
-    var cards = [];
-    switch (steps.getCurrent()) {
-      case 1: cards = ['slide-0', 'slide-1']; break;
-      case 2: cards = ['slide-1', 'slide-2']; break;
-      case 3: cards = ['slide-2', 'slide-3']; break;
-      case 4: cards = ['slide-3', 'slide-4']; break;
-      case 5: cards = ['slide-4', 'slide-5']; break;
-      case 6: cards = ['slide-5', 'slide-6']; break;
-      case 7: cards = ['slide-6', 'slide-7']; break;
-      case 8: cards = ['slide-7', 'slide-8']; break;
-    }
-    helper.getElement(cards[0]).classList.add(hidden);
-    helper.getElement(cards[1]).classList.remove(hidden);
-  }
+    // On window load run counter
+    window.onload = function() {
+        // If I'm in the splash screen
+        if (helper.getElement('splash')) {
+            splash.init();
+        }
+    };
 
-  function showPrevCard() {
-    var cards = [];
-    switch (steps.getCurrent()) {
-      case 1: cards = ['slide-1', 'slide-0']; break;
-      case 2: cards = ['slide-2', 'slide-1']; break;
-      case 3: cards = ['slide-3', 'slide-2']; break;
-      case 4: cards = ['slide-4', 'slide-3']; break;
-      case 5: cards = ['slide-5', 'slide-4']; break;
-      case 6: cards = ['slide-6', 'slide-5']; break;
-      case 7: cards = ['slide-7', 'slide-6']; break;
-      case 8: cards = ['slide-8', 'slide-7']; break;
-      case 9: cards = ['slide-9', 'slide-8']; break;
-    }
-    helper.getElement(cards[0]).classList.add(hidden);
-    helper.getElement(cards[1]).classList.remove(hidden);
-  }
-
-  // Move the background forward adding one css class
-  function moveBackgroundForward() {
-    var stepClass = steps.getClass(steps.nextStep());
-
-    if ( ! body.classList.contains(stepClass)) {
-      body.classList.add(stepClass);
-    }
-  }
-
-  // Move the background backward removing one css class
-  function moveBackgroundBackward() {
-    var stepClass = steps.getClass(steps.getCurrent());
-
-    if (body.classList.contains(stepClass)) {
-      body.classList.remove(stepClass);
-      steps.prevStep();
-    }
-  }
-
-  // show / Hide left and right arrows
-  function showHideArrows() {
-    var currentStep = steps.getCurrent();
-
-    if (currentStep == 9) {
-      if ( ! rightArrow.classList.contains(hidden)) {
-        rightArrow.classList.add(hidden);
-      }
-    } else {
-      rightArrow.classList.remove(hidden);
+    // Show one card
+    function showCard(card) {
+        animations.fadeIn(helper.getElement(card), 0);
     }
 
-    if (currentStep == 0) {
-      if ( ! leftArrow.classList.contains(hidden)) {
-        leftArrow.classList.add(hidden);
-      }
-    } else {
-      leftArrow.classList.remove(hidden);
+    // Hide one card
+    function hideCard(card) {
+        animations.fadeOut(helper.getElement(card), 0);
     }
-  }
 
-  // Event on click right arrow
-  rightArrow.onclick = function() {
-    moveBackgroundForward();
-    showHideArrows();
-    showNextCard();
-  }
+    // Move the background forward adding one css class
+    function moveBackgroundForward(currentStepClass, nextStep) {
+        if (body.classList.contains('prev-' + currentStepClass)) {
+            body.classList.remove('prev-' + currentStepClass);
+        }
+        body.classList.remove('next-' + currentStepClass);
+        body.classList.add('next-' + nextStep);
+    }
 
-  // Event on click left arrow
-  leftArrow.onclick = function() {
-    moveBackgroundBackward();
-    showHideArrows();
-    showPrevCard();
-  }
+    // Move the background backward removing one css class
+    function moveBackgroundBackward(currentStep, prevStep) {
+        if (body.classList.contains('next-' + currentStep)) {
+            body.classList.remove('next-' + currentStep);
+        }
+        body.classList.remove('prev-' + currentStep);
+        body.classList.add('prev-' + prevStep);
+    }
+
+    // Show or Hide left and right arrows
+    function showHideArrows(step) {
+        if (step == 0) {
+            animations.fadeOut(leftArrow, 0);
+        } else {
+            animations.fadeIn(leftArrow, animations.delay2);
+        }
+
+        if (step == 9) {
+            animations.fadeOut(rightArrow, 0);
+        } else {
+            animations.fadeIn(rightArrow, animations.delay2);
+        }
+    }
+
+    // Event on click right arrow
+    if (rightArrow) {
+        rightArrow.onclick = function(e) {
+            e.preventDefault();
+
+            var currentStepClass = steps.getClass(steps.getCurrent()),
+                nextStepClass = steps.getClass(steps.getNextStep());
+
+            showHideArrows(steps.getNextStep());
+            introText.showHide(steps.getNextStep());
+            infoText.showHide(steps.getNextStep());
+            hideCard(currentStepClass);
+
+            setTimeout(function() {
+                moveBackgroundForward(currentStepClass, nextStepClass);
+            }, animations.delay1);
+
+            setTimeout(function() {
+                showCard(nextStepClass);
+            }, animations.delay2);
+
+            // Forward one step
+            steps.addStep();
+        }
+    }
+
+    // Event on click left arrow
+    if (leftArrow) {
+        leftArrow.onclick = function(e) {
+            e.preventDefault();
+
+            var currentStepClass = steps.getClass(steps.getCurrent()),
+                prevStepClass = steps.getClass(steps.getPrevStep());
+
+            showHideArrows(steps.getPrevStep());
+            introText.showHide(steps.getPrevStep());
+            infoText.showHide(steps.getPrevStep());
+            hideCard(currentStepClass);
+
+            setTimeout(function() {
+                moveBackgroundBackward(currentStepClass, prevStepClass);
+            }, animations.delay1);
+
+            setTimeout(function() {
+                showCard(prevStepClass);
+            }, animations.delay2);
+
+            // Backward one step
+            steps.removeStep();
+        }
+    }
+
 
 })();

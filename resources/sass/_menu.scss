@@ -1,0 +1,25 @@
+.menu {
+  border: dotted;
+  bottom: 30px;
+  color: $intro-text;
+  display: flex;
+  font-family: 'Klavika-Light', serif;
+  font-size: 15px;
+  left: 30px;
+  position: absolute;
+
+  span {
+    border-right-style: dotted;
+    padding: 5px 10px;
+
+    &:last-child {
+      border-right-style: none;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}

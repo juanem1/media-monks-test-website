@@ -11,6 +11,28 @@
     color: #fff;
     font-family: 'Klavika-Regular', serif;
     font-style: italic;
+
+    span {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  .bounceIn {
+    animation: bounceIn 1s;
+  }
+
+  .bounceOut {
+    animation: bounceOut 1s;
+    animation-fill-mode: forwards;
+  }
+
+  .counter {
+    color: #fff;
+    bottom: 30px;
+    font-family: 'Klavika-Light', serif;
+    position: absolute;
+    right: 30px;
   }
 
 }

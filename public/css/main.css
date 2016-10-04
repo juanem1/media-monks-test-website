@@ -28,38 +28,214 @@
   100% {
     transform: translate(0, -50px); } }
 
-@keyframes animatedBackground {
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
   0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1); }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9); }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03); }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97); }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1); } }
+
+@keyframes bounceOut {
+  20% {
+    transform: translate3d(0, 10px, 0); }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0); }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0); } }
+
+@keyframes next-step1 {
+  from {
     background-position: 0 0; }
-  100% {
-    background-position: 10% 0; } }
+  to {
+    background-position: 12.5% 0; } }
 
-.step-1 {
-  background-position: 11.11% 0; }
+@keyframes next-step2 {
+  from {
+    background-position: 12.5% 0; }
+  to {
+    background-position: 25% 0; } }
 
-.step-2 {
-  background-position: 22.22% 0; }
+@keyframes next-step3 {
+  from {
+    background-position: 25% 0; }
+  to {
+    background-position: 37.5% 0; } }
 
-.step-3 {
-  background-position: 33.33% 0; }
+@keyframes next-step4 {
+  from {
+    background-position: 37.5% 0; }
+  to {
+    background-position: 50% 0; } }
 
-.step-4 {
-  background-position: 44.44% 0; }
+@keyframes next-step5 {
+  from {
+    background-position: 50% 0; }
+  to {
+    background-position: 62.5% 0; } }
 
-.step-5 {
-  background-position: 55.55% 0; }
+@keyframes next-step6 {
+  from {
+    background-position: 62.5% 0; }
+  to {
+    background-position: 75% 0; } }
 
-.step-6 {
-  background-position: 66.66% 0; }
+@keyframes next-step7 {
+  from {
+    background-position: 75% 0; }
+  to {
+    background-position: 87.5% 0; } }
 
-.step-7 {
-  background-position: 77.77% 0; }
+@keyframes next-step8 {
+  from {
+    background-position: 87.5% 0; }
+  to {
+    background-position: 100% 0; } }
 
-.step-8 {
-  background-position: 88.88% 0; }
+@keyframes next-step9 {
+  from {
+    background-position: 100% 0; }
+  to {
+    background-position: 110% 0; } }
 
-.step-9 {
-  background-position: 99.99% 0; }
+.next-step-1 {
+  animation: next-step1 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-2 {
+  animation: next-step2 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-3 {
+  animation: next-step3 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-4 {
+  animation: next-step4 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-5 {
+  animation: next-step5 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-6 {
+  animation: next-step6 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-7 {
+  animation: next-step7 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-8 {
+  animation: next-step8 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.next-step-9 {
+  animation: next-step9 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+@keyframes prev-step8 {
+  from {
+    background-position: 110% 0; }
+  to {
+    background-position: 100% 0; } }
+
+@keyframes prev-step7 {
+  from {
+    background-position: 100% 0; }
+  to {
+    background-position: 87.5% 0; } }
+
+@keyframes prev-step6 {
+  from {
+    background-position: 87.5% 0; }
+  to {
+    background-position: 75% 0; } }
+
+@keyframes prev-step5 {
+  from {
+    background-position: 75% 0; }
+  to {
+    background-position: 62.5% 0; } }
+
+@keyframes prev-step4 {
+  from {
+    background-position: 62.5% 0; }
+  to {
+    background-position: 50% 0; } }
+
+@keyframes prev-step3 {
+  from {
+    background-position: 50% 0; }
+  to {
+    background-position: 37.5% 0; } }
+
+@keyframes prev-step2 {
+  from {
+    background-position: 37.5% 0; }
+  to {
+    background-position: 25% 0; } }
+
+@keyframes prev-step1 {
+  from {
+    background-position: 25% 0; }
+  to {
+    background-position: 12.5% 0; } }
+
+@keyframes prev-step0 {
+  from {
+    background-position: 12.5% 0; }
+  to {
+    background-position: 0 0; } }
+
+.prev-step-0 {
+  animation: prev-step0 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-1 {
+  animation: prev-step1 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-2 {
+  animation: prev-step2 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-3 {
+  animation: prev-step3 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-4 {
+  animation: prev-step4 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-5 {
+  animation: prev-step5 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-6 {
+  animation: prev-step6 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-7 {
+  animation: prev-step7 0.75s ease-out;
+  animation-fill-mode: forwards; }
+
+.prev-step-8 {
+  animation: prev-step8 0.75s ease-out;
+  animation-fill-mode: forwards; }
 
 .splash .monk {
   animation: levitation 1.2s alternate ease-in-out infinite;
@@ -71,18 +247,59 @@
   color: #fff;
   font-family: 'Klavika-Regular', serif;
   font-style: italic; }
+  .splash .splash-text span {
+    display: none;
+    opacity: 0; }
+
+.splash .bounceIn {
+  animation: bounceIn 1s; }
+
+.splash .bounceOut {
+  animation: bounceOut 1s;
+  animation-fill-mode: forwards; }
+
+.splash .counter {
+  color: #fff;
+  bottom: 30px;
+  font-family: 'Klavika-Light', serif;
+  position: absolute;
+  right: 30px; }
+
+.menu {
+  border: dotted;
+  bottom: 30px;
+  color: #f2f2f2;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Klavika-Light', serif;
+  font-size: 15px;
+  left: 30px;
+  position: absolute; }
+  .menu span {
+    border-right-style: dotted;
+    padding: 5px 10px; }
+    .menu span:last-child {
+      border-right-style: none; }
+    .menu span a {
+      color: #fff;
+      text-decoration: none; }
+
+.info-text {
+  bottom: 38px;
+  color: #f2f2f2;
+  font-family: 'Klavika-Light', serif;
+  left: 340px;
+  opacity: 0;
+  position: absolute; }
 
 body,
 html {
   height: 100%; }
 
 body {
-  background: url("../images/background.jpg") 0 0 #000 no-repeat;
-  background-position: 0 0;
+  background: url("../images/background.jpg") 0 0 #101010 no-repeat;
   background-size: cover;
   bottom: 0;
-  display: -ms-flexbox;
-  display: flex;
   font-size: 16px;
   -ms-flex-pack: justify;
       justify-content: space-between;
@@ -93,10 +310,25 @@ body {
     -ms-flex-align: center;
         align-items: center;
     background: url("../images/loaderbg.png") center center #101010 no-repeat;
+    display: -ms-flexbox;
+    display: flex;
     -ms-flex-direction: column;
         flex-direction: column;
     -ms-flex-pack: center;
         justify-content: center; }
+
+.container {
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%; }
+
+.intro-text {
+  bottom: 100px;
+  color: #f2f2f2;
+  font-family: 'Klavika-Light', serif;
+  font-size: 14px;
+  left: 30px;
+  position: absolute; }
 
 .arrow {
   -ms-flex-align: center;
@@ -109,52 +341,88 @@ body {
   font-weight: bold;
   text-decoration: none; }
   .arrow a {
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    height: 50px;
+    height: 50%;
+    transition: .15s ease-in-out;
     width: 50px; }
+  .arrow.hidden {
+    display: none; }
   .arrow.left-arrow a {
-    background-image: url("../images/back.svg");
-    margin-left: 20px; }
+    background-image: url("../images/svg/back.svg");
+    margin-left: 20px;
+    transform: translateX(0); }
+    .arrow.left-arrow a:hover {
+      transform: translateX(-5px); }
   .arrow.right-arrow a {
-    background-image: url("../images/next.svg");
-    margin-right: 20px; }
-
-.hidden {
-  display: none; }
+    background-image: url("../images/svg/next.svg");
+    margin-right: 20px;
+    transform: translateX(0); }
+    .arrow.right-arrow a:hover {
+      transform: translateX(5px); }
 
 .slides {
   color: #fff;
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-positive: 10;
       flex-grow: 10;
   font-family: 'Klavika-Regular', serif; }
   .slides .slide {
+    display: -ms-flexbox;
+    display: flex;
     font-size: 3.5rem;
+    height: 100%;
     letter-spacing: 3px;
     margin: 2rem 0 0 2rem;
-    padding: 0;
-    transition: all 2s linear; }
+    opacity: 0;
+    padding: 0; }
+    .slides .slide:first-child {
+      opacity: 1; }
+    .slides .slide.top {
+      -ms-flex-align: start;
+          align-items: flex-start; }
+    .slides .slide.left {
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+    .slides .slide.right {
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+    .slides .slide.center {
+      -ms-flex-align: center;
+          align-items: center; }
     .slides .slide span {
       border-bottom: 1px solid; }
-    .slides .slide.hidden {
-      display: none; }
-  .slides .center {
-    -ms-flex-align: center;
-        align-items: center; }
-  .slides .left {
-    -ms-flex-align: start;
-        align-items: flex-start; }
-  .slides .right {
-    -ms-flex-align: end;
-        align-items: flex-end; }
-  .slides .top {
-    -ms-flex-align: center;
-        align-items: center; }
+  .slides .step-9 > div {
+    margin-right: 15px; }
+  .slides .step-9 .step-9-details {
+    font-family: 'Klavika-Light', serif;
+    font-size: .85rem;
+    letter-spacing: 0;
+    margin-top: 20%;
+    text-align: right; }
+    .slides .step-9 .step-9-details a {
+      color: #fff; }
+    .slides .step-9 .step-9-details .contact {
+      margin-top: 30px; }
+      .slides .step-9 .step-9-details .contact a {
+        padding-left: 20px;
+        text-decoration: none; }
+        .slides .step-9 .step-9-details .contact a:hover {
+          text-decoration: underline; }
+      .slides .step-9 .step-9-details .contact .mail {
+        background: url("../images/svg/mail.svg") transparent left center no-repeat;
+        background-size: contain;
+        margin-right: 15px; }
+      .slides .step-9 .step-9-details .contact .facebook {
+        background: url("../images/svg/facebook.svg") transparent left center no-repeat;
+        background-size: contain;
+        margin-right: 15px; }
+      .slides .step-9 .step-9-details .contact .twitter {
+        background: url("../images/svg/twitter.svg") transparent left center no-repeat;
+        background-size: contain; }
 
 .logo {
-  bottom: 15px;
+  bottom: 5px;
   height: 100px;
   position: fixed;
   right: 15px;

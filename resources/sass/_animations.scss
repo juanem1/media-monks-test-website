@@ -3,43 +3,134 @@
   100% {transform: translate(0, -50px); }
 }
 
-@keyframes animatedBackground {
-  0% { background-position: 0 0; }
-  100% { background-position: 10% 0; }
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {opacity: 0; transform: scale3d(.3, .3, .3);}
+  20% {transform: scale3d(1.1, 1.1, 1.1);}
+  40% {transform: scale3d(.9, .9, .9);}
+  60% {opacity: 1;transform: scale3d(1.03, 1.03, 1.03);}
+  80% {transform: scale3d(.97, .97, .97);}
+  to {opacity: 1;transform: scale3d(1, 1, 1);}
 }
 
-.step-1 {
-  background-position: 11.11% 0;
+@keyframes bounceOut {
+  20% {transform: translate3d(0, 10px, 0);}
+  40%, 45% {opacity: 1; transform: translate3d(0, -20px, 0);}
+  to {opacity: 0;transform: translate3d(0, 2000px, 0);}
 }
 
-.step-2 {
-  background-position: 22.22% 0;
+// MOVE BACKGROUND --------------------------------------------------------
+
+$pgeStep1: 12.5%;
+$pgeStep2: 25%;
+$pgeStep3: 37.5%;
+$pgeStep4: 50%;
+$pgeStep5: 62.5%;
+$pgeStep6: 75%;
+$pgeStep7: 87.5%;
+$pgeStep8: 100%;
+$pgeStep9: 110%;
+
+@mixin animation-step($name) {
+  animation: $name .75s ease-out;
+  animation-fill-mode: forwards;
 }
 
-.step-3 {
-  background-position: 33.33% 0;
+// Forward Steps
+@keyframes next-step1 {
+	from {background-position: 0 0;}
+	to {background-position: $pgeStep1 0;}
+}
+@keyframes next-step2 {
+  from {background-position: $pgeStep1 0;}
+	to {background-position: $pgeStep2 0;}
+}
+@keyframes next-step3 {
+  from {background-position: $pgeStep2 0;}
+	to {background-position: $pgeStep3 0;}
+}
+@keyframes next-step4 {
+  from {background-position: $pgeStep3 0;}
+	to {background-position: $pgeStep4 0;}
+}
+@keyframes next-step5 {
+  from {background-position: $pgeStep4 0;}
+	to {background-position: $pgeStep5 0;}
+}
+@keyframes next-step6 {
+  from {background-position: $pgeStep5 0;}
+	to {background-position: $pgeStep6 0;}
+}
+@keyframes next-step7 {
+  from {background-position: $pgeStep6 0;}
+	to {background-position: $pgeStep7 0;}
+}
+@keyframes next-step8 {
+  from {background-position: $pgeStep7 0;}
+	to {background-position: $pgeStep8 0;}
+}
+@keyframes next-step9 {
+  from {background-position: $pgeStep8 0;}
+	to {background-position: $pgeStep9 0;}
 }
 
-.step-4 {
-  background-position: 44.44% 0;
+.next-step-1 { @include animation-step(next-step1); }
+.next-step-2 { @include animation-step(next-step2); }
+.next-step-3 { @include animation-step(next-step3); }
+.next-step-4 { @include animation-step(next-step4); }
+.next-step-5 { @include animation-step(next-step5); }
+.next-step-6 { @include animation-step(next-step6); }
+.next-step-7 { @include animation-step(next-step7); }
+.next-step-8 { @include animation-step(next-step8); }
+.next-step-9 { @include animation-step(next-step9); }
+
+
+// Backward Steps
+@keyframes prev-step8 {
+  from {background-position: $pgeStep9 0;}
+	to {background-position: $pgeStep8 0;}
+}
+@keyframes prev-step7 {
+  from {background-position: $pgeStep8 0;}
+	to {background-position: $pgeStep7 0;}
+}
+@keyframes prev-step6 {
+  from {background-position: $pgeStep7 0;}
+	to {background-position: $pgeStep6 0;}
+}
+@keyframes prev-step5 {
+  from {background-position: $pgeStep6 0;}
+	to {background-position: $pgeStep5 0;}
+}
+@keyframes prev-step4 {
+  from {background-position: $pgeStep5 0;}
+	to {background-position: $pgeStep4 0;}
+}
+@keyframes prev-step3 {
+  from {background-position: $pgeStep4 0;}
+	to {background-position: $pgeStep3 0;}
+}
+@keyframes prev-step2 {
+  from {background-position: $pgeStep3 0;}
+	to {background-position: $pgeStep2 0;}
+}
+@keyframes prev-step1 {
+  from {background-position: $pgeStep2 0;}
+	to {background-position: $pgeStep1 0;}
+}
+@keyframes prev-step0 {
+	from {background-position: $pgeStep1 0;}
+	to {background-position: 0 0;}
 }
 
-.step-5 {
-  background-position: 55.55% 0;
-}
-
-.step-6 {
-  background-position: 66.66% 0;
-}
-
-.step-7 {
-  background-position: 77.77% 0;
-}
-
-.step-8 {
-  background-position: 88.88% 0;
-}
-
-.step-9 {
-  background-position: 99.99% 0;
-}
+.prev-step-0 { @include animation-step(prev-step0); }
+.prev-step-1 { @include animation-step(prev-step1); }
+.prev-step-2 { @include animation-step(prev-step2); }
+.prev-step-3 { @include animation-step(prev-step3); }
+.prev-step-4 { @include animation-step(prev-step4); }
+.prev-step-5 { @include animation-step(prev-step5); }
+.prev-step-6 { @include animation-step(prev-step6); }
+.prev-step-7 { @include animation-step(prev-step7); }
+.prev-step-8 { @include animation-step(prev-step8); }
