@@ -1,8 +1,11 @@
-class IntroText {
+import {Helper} from './helper';
+import {Animations} from './animations';
 
-    constructor(helper, animations) {
-        this.helper = helper;
-        this.animations = animations;
+export class IntroText {
+
+    constructor() {
+      this.helper = new Helper;
+      this.animations = new Animations;
     }
 
     // Show or hide intro text

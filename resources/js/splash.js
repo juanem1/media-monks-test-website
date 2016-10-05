@@ -1,7 +1,9 @@
-class Splash {
+import {Helper} from './helper';
 
-    constructor(helper) {
-        this.helper = helper;
+export class Splash {
+
+    constructor() {
+        this.helper = new Helper;
     }
 
     init() {
@@ -11,9 +13,9 @@ class Splash {
     }
 
     runCounter() {
-        var percentage = 0,
+        let percentage = 0,
             that = this;
-        var interval = setInterval(function() {
+        let interval = setInterval(function() {
             that.helper.getElement('counter').innerHTML = percentage;
             percentage++;
             if (percentage >= 100) {
@@ -23,7 +25,7 @@ class Splash {
     }
 
     animateLoadingText() {
-        var el = this.helper.getElement('splash-text');
+        let el = this.helper.getElement('splash-text');
         setInterval(function() {
             if (el.classList.contains('bounceIn')) {
                 el.classList.remove('bounceIn');

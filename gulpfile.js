@@ -1,11 +1,11 @@
 var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sass = require('gulp-sass'),
-    concat = require('gulp-concat'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     clean = require('gulp-clean'),
-    babel = require('gulp-babel');
+    rollup = require('rollup'),
+    buble = require('rollup-plugin-buble');
 
 /**
  * Compile all styles
@@ -24,10 +24,16 @@ gulp.task('styles', ['clean-css'], function() {
  * Compile all scripts
  */
 gulp.task('scripts', ['clean-js'], function() {
-    return gulp.src('resources/js/**/*.js')
-      .pipe(babel())
-      .pipe(concat('main.js'))
-      .pipe(gulp.dest('public/js'));
+  rollup.rollup({
+      entry: './resources/js/index.js',
+      sourceMap: true,
+      plugins: [buble()]
+    }).then(function(bundle) {
+      bundle.generate({ format: 'es' });
+      bundle.write({
+        dest: './public/js/main.js'
+      });
+    });
 });
 
 /**

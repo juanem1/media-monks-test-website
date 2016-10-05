@@ -1,4 +1,4 @@
-class Helper {
+export class Helper {
 
   // Return one element for its class
   getElement(el) {

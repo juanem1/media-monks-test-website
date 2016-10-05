@@ -1,4 +1,4 @@
-class Animations {
+export class Animations {
 
     constructor() {
         this.delay1 = 600;
@@ -8,7 +8,7 @@ class Animations {
     fadeIn(el, delay) {
         delay = typeof delay == 'undefined' ? 0 : delay;
         setTimeout(function(){
-            var fadeEffect = setInterval(function() {
+            let fadeEffect = setInterval(function() {
                 if (!el.style.opacity) {
                     el.style.opacity = 0;
                 }
@@ -25,7 +25,7 @@ class Animations {
     fadeOut(el, delay) {
         delay = typeof delay == 'undefined' ? 0 : delay;
         setTimeout(function(){
-            var fadeEffect = setInterval(function() {
+            let fadeEffect = setInterval(function() {
                 if (!el.style.opacity) {
                     el.style.opacity = 1;
                 }

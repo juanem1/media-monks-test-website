@@ -1,4 +1,4 @@
-class Steps {
+export class Steps {
 
     constructor() {
         this.step = 0;
